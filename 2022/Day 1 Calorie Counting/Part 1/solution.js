@@ -50,7 +50,7 @@ console.log(`Elf number ${elf} is holding the most amount of calories at ${great
 
 
 findGreatest(turnStringToArray(example));
-// findGreatest(turnStringToArray(data));
+findGreatest(turnStringToArray(data));
 
 
 
