@@ -1,5 +1,4 @@
-const data = [
-9057
+const data = `9057
 8878
 2753
 7027
@@ -2245,5 +2244,6 @@ const data = [
 7733
 2547
 2653
+`
 
-]
+export default data;

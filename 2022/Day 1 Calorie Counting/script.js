@@ -1,3 +1,7 @@
+import data from './data'
+
+
+
 const example = `1000
 2000
 3000
@@ -13,30 +17,40 @@ const example = `1000
 
 10000 `
 
-//turn string into an array
-const array = example.split('\n');
-// console.log(array)
+function turnStringToArray(string){
+     //turn string into an array
+    const array = string.split('\n');
+    // console.log(array)
+    return array;
+}
 
 
 function findGreatest (array){
-    let greatest = -Infinity;
+    let greatest = 0;
+    let elf = 0;
     //got thru the array
-for(let i = 0; i < array.length; i++){
     let sum = 0;
+
+for(let i = 0; i < array.length; i++){
     // console.log(array[i]);
-    if(!array[i]) {
+    if(Number(array[i]) === 0) {
         if(sum > greatest) {
             greatest = sum
-            sum = 0;
         }
+        
+        elf++;
+        sum = 0;
+        // console.log(sum)
     }
     sum += Number(array[i]);
-    console.log(sum);
+    // console.log(sum);
+}
+console.log(`Elf number ${elf} is holding the most amount of calories at ${greatest}`);
 }
 
-console.log(greatest);
 
-}
+findGreatest(turnStringToArray(example));
+// findGreatest(turnStringToArray(data));
 
 
-findGreatest(array)
+
