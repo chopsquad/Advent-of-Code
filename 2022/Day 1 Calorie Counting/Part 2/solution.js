@@ -1,3 +1,4 @@
+import data from "../Part 1/data"
 const example = `1000
 2000
 3000
@@ -30,9 +31,10 @@ function findGreatest (array){
     //got thru the array
     let sum = 0;
 
-for(let i = 0; i < array.length; i++){
-    // console.log(array[i]);
-    if(Number(array[i]) === 0) {
+for(let i = 0; i <= array.length; i++){
+    console.log(sum)
+    if(Number(array[i]) === 0 || i === array.length) {
+        console.log(sum)
         if(sum > first[0]) {
             const previous = first[0]
             const previousElf = first[1]
@@ -48,8 +50,8 @@ for(let i = 0; i < array.length; i++){
                     third[1] = secondPrevElf;
                 }
             }
-        }
-        if (sum > second[0] && sum < first[0] && sum > third[0]){
+        }else if (sum > second[0] && sum < first[0] && sum > third[0]){
+            
             const previous = second[0];
             const previousElf = second[1];
             second[0] = sum;
@@ -58,9 +60,7 @@ for(let i = 0; i < array.length; i++){
                 third[0] = previous;
                 third[1] = previousElf;
             };
-        }
-         if (sum > third[0] && sum < (first[0] || second[0])){
-            console.log(sum);
+        }else if (sum > third[0] && sum < second[0]){
             third[0] = sum
             third[1] = elf
         }
@@ -77,7 +77,11 @@ for(let i = 0; i < array.length; i++){
 console.log(first);
 console.log(second);
 console.log(third);
+
+console.log("Total Cals:",first[0]+second[0]+third[0])
+return first[0]+second[0]+third[0];
 }
 
 
-findGreatest(turnStringToArray(example));
+// findGreatest(turnStringToArray(example));
+findGreatest(turnStringToArray(data));
