@@ -27,19 +27,26 @@ example = example.filter((ele) => ele != '');
 
 function playTheGame(array) {
   //player scores
-  let player = 0;
-  let opp = 0;
+  let totalPlayerScore = 0;
+  let totalOppScore = 0;
 
   const choices = {
     A: { loses: 'Y', wins: 'Z' },
     B: { loses: 'Z', wins: 'X' },
     C: { loses: 'X', wins: 'Y' },
   };
+
+  const score = {
+    A: 1,
+    X: 1,
+    B: 2,
+    Y: 2,
+    C: 3,
+    Z: 3,
+  };
+
   //go thru the array
   for (let i = 0; i < array.length; i++) {
-    //round score
-    let playerScore = 0;
-    let oppScore = 0;
     const ele = array[i];
     //opp
     const opp = ele[0];
@@ -50,11 +57,31 @@ function playTheGame(array) {
     console.log(choices[opp].wins === player);
     if (choices[opp].wins == player) {
       console.log(opp);
-      console.log('Wins');
+      console.log('OPP Wins');
+      const playerScore = score[player] + 0;
+      const oppScore = score[opp] + 6;
+      console.log(playerScore);
+      console.log(oppScore);
+      totalPlayerScore += playerScore;
+      totalOppScore += oppScore;
     } else if (choices[opp].loses == player) {
-      console.log('Loss');
+      console.log('OPP Loss');
+      const playerScore = score[player] + 6;
+      const oppScore = score[opp] + 0;
+      totalPlayerScore += playerScore;
+      totalOppScore += oppScore;
+    } else {
+      console.log('Tie');
+      const playerScore = score[player] + 3;
+      const oppScore = score[opp] + 3;
+      totalPlayerScore += playerScore;
+      totalOppScore += oppScore;
     }
   }
+
+  console.log(totalOppScore);
+  console.log(totalPlayerScore);
 }
 
-playTheGame(example);
+// playTheGame(example);
+playTheGame(data);
