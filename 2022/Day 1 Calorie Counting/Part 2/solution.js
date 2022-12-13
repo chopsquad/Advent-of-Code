@@ -33,13 +33,34 @@ function findGreatest (array){
 for(let i = 0; i < array.length; i++){
     // console.log(array[i]);
     if(Number(array[i]) === 0) {
-        if(sum > first[0] && sum > second[0] && sum > third[0]) {
+        if(sum > first[0]) {
+            const previous = first[0]
+            const previousElf = first[1]
             first[0] = sum
             first[1] = elf
-        }else if (sum < first[0] && sum > second[0] && sum > third[0]){
-            second[0] = sum
-            second[1] = elf
-        }else if (sum < first[0] && sum < second[0]){
+            if(previous > second[0]){
+                const secondPrev = second[0];
+                const secondPrevElf = second[1]
+                second[0] = previous;
+                second[1] = previousElf;
+                if(secondPrev > third[0]){
+                    third[0] = secondPrev;
+                    third[1] = secondPrevElf;
+                }
+            }
+        }
+        if (sum > second[0] && sum < first[0] && sum > third[0]){
+            const previous = second[0];
+            const previousElf = second[1];
+            second[0] = sum;
+            second[1] = elf;
+            if(previous > third[0]) {
+                third[0] = previous;
+                third[1] = previousElf;
+            };
+        }
+         if (sum > third[0] && sum < (first[0] || second[0])){
+            console.log(sum);
             third[0] = sum
             third[1] = elf
         }
@@ -50,7 +71,7 @@ for(let i = 0; i < array.length; i++){
         
     }
     sum += Number(array[i]);
-    // console.log(sum);
+    console.log("sum:", sum);
 }
 
 console.log(first);
